@@ -7,8 +7,8 @@ const PieChart = ({ pieData }) => {
   const series = pieData?.series;
   const labels = pieData?.labels;
   console.log(series, labels, "label ++");
-  const totalSum = series.reduce((sum, data) => sum + data, 0);
-  const percentages = series.map(
+  const totalSum = series?.reduce((sum, data) => sum + data, 0);
+  const percentages = series?.map(
     (data) => ((data / totalSum) * 100).toFixed(2) + "%"
   );
   const options = {
@@ -54,6 +54,27 @@ const PieChart = ({ pieData }) => {
     responsive: [
       {
         breakpoint: 480,
+        options: {
+          chart: {
+            width: 280,
+          },
+          legend: {
+            position: "bottom",
+
+            formatter: function (seriesName, opts) {
+              return [
+                seriesName,
+                "-",
+                "<span style='display: inline-block; font-weight:400;'>",
+                opts.w.globals.series[opts.seriesIndex] + "%",
+                "</span>",
+              ];
+            },
+          },
+        },
+      },
+      {
+        breakpoint: 821,
         options: {
           chart: {
             width: 300,

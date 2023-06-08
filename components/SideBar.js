@@ -18,7 +18,7 @@ const SideBar = ({ setExpand }) => {
       <h2 className="mx-3 font-bold text-3xl">
         Board.{" "}
         <span
-          className="absolute top-2 right-2 text-xl inline-block h-6 w-6 rounded-full border-white sm:hidden"
+          className="absolute top-2 right-2 text-xl inline-block h-6 w-6 rounded-full border-white lg:hidden"
           onClick={hideDiv}
         >
           X

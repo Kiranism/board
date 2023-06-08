@@ -43,12 +43,14 @@ const LineGraph = ({ data }) => {
             <Select />
           </p>
         </div>
-        <ReactApexChart
-          options={options}
-          series={series}
-          type="line"
-          height={300}
-        />
+        <div className="-mt-10 px-3">
+          <ReactApexChart
+            options={options}
+            series={series}
+            type="line"
+            height={320}
+          />
+        </div>
       </div>
     )
   );

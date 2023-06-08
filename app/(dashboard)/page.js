@@ -54,11 +54,11 @@ export default function Home() {
   return (
     <>
       <main className="flex-1 sm:px-6">
-        <header className="flex items-center justify-between w-full flex-wrap sm:flex-row flex-col">
-          <div className="flex items-center w-full sm:w-0 justify-between mb-4 sm:mb-0">
+        <header className="flex items-center justify-between w-full  flex-wrap sm:flex-row flex-col">
+          <div className="flex items-center w-full md:w-60  justify-between relative mb-4 sm:mb-0">
             {!expand && (
               <button
-                className="lg:hidden navbar-burger flex items-center text-black p-3 order-1"
+                className="lg:hidden z-40 navbar-burger flex items-center text-black p-3 order-first"
                 onClick={() => setExpand(!expand)}
               >
                 <svg
@@ -71,7 +71,7 @@ export default function Home() {
                 </svg>
               </button>
             )}
-            <h2 className="text-black font-bold text-xl mx-auto sm:mx-0">
+            <h2 className="text-black font-bold text-xl absolute inset-x-0 mx-auto xl:mx-0 text-center lg:text-left left-0 right-0">
               Dashboard
             </h2>
           </div>
@@ -166,7 +166,7 @@ export default function Home() {
         <div className="bg-white px-3 py-2 rounded-lg shadow-sm">
           <LineGraph data={data} />
         </div>
-        <div className="flex flex-col sm:flex-row gap-8 my-8">
+        <div className="flex flex-col sm:flex-row gap-8 my-8 flex-wrap">
           <PieCard pieData={pieData} />
           <ScheduleCard />
         </div>

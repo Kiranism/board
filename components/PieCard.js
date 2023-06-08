@@ -12,9 +12,7 @@ const PieCard = ({ pieData }) => {
         </p>
       </div>
 
-      <div className="w-full">
-        <PieChart pieData={pieData} />
-      </div>
+      <div className="w-full">{pieData && <PieChart pieData={pieData} />}</div>
     </div>
   );
 };
