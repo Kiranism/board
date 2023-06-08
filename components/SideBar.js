@@ -14,7 +14,7 @@ const SideBar = ({ setExpand }) => {
     setExpand(false);
   };
   return (
-    <aside className="fixed z-40 top-0 left-0 h-[calc(100vh-50px)] w-64 flex flex-col overflow-y-auto border-r bg-black px-5 py-8 text-white rounded-xl m-6">
+    <aside className="fixed z-40 top-0 left-0 h-[calc(100vh-50px)] w-64 flex flex-col overflow-y-auto border-r bg-black px-5 py-8 text-white rounded-3xl m-6 sm:m-8">
       <h2 className="mx-3 font-bold text-3xl">
         Board.{" "}
         <span

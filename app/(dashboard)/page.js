@@ -55,7 +55,7 @@ export default function Home() {
     <>
       <main className="flex-1 sm:px-6">
         <header className="flex items-center justify-between w-full flex-wrap sm:flex-row flex-col">
-          <div className="flex items-center w-full sm:w-0 justify-between mb-4">
+          <div className="flex items-center w-full sm:w-0 justify-between mb-4 sm:mb-0">
             {!expand && (
               <button
                 className="lg:hidden navbar-burger flex items-center text-black p-3 order-1"
@@ -137,7 +137,7 @@ export default function Home() {
             </div>
           </div>
         </header>
-        <div className="flex flex-col sm:flex-row gap-8 my-10 flex-wrap">
+        <div className="flex flex-col sm:flex-row gap-8 my-8 flex-wrap">
           <Card
             color={"bg-[#DDEFE0]"}
             title="Total Revenues"
@@ -166,7 +166,7 @@ export default function Home() {
         <div className="bg-white px-3 py-2 rounded-lg shadow-sm">
           <LineGraph data={data} />
         </div>
-        <div className="flex flex-col sm:flex-row gap-8 my-10">
+        <div className="flex flex-col sm:flex-row gap-8 my-8">
           <PieCard pieData={pieData} />
           <ScheduleCard />
         </div>

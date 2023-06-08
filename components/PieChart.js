@@ -75,6 +75,7 @@ const PieChart = ({ pieData }) => {
         },
       },
     ],
+    colors: ["#EE8484", "#9BDD7C", "#F6DC7D"],
   };
 
   return (
@@ -83,8 +84,8 @@ const PieChart = ({ pieData }) => {
         options={options}
         series={series}
         type="pie"
-        height={500}
-        width={440}
+        height={400}
+        width={400}
       />
     </div>
   );

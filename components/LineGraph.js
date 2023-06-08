@@ -25,6 +25,7 @@ const LineGraph = ({ data }) => {
       enabled: true,
       fillSeriesColor: true,
     },
+    colors: ["#E9A0A0", "#9BDD7C"],
   };
 
   console.log("series", series, categories);
@@ -42,7 +43,7 @@ const LineGraph = ({ data }) => {
           options={options}
           series={series}
           type="line"
-          height={350}
+          height={300}
         />
       </div>
     )
