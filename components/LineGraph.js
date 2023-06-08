@@ -2,6 +2,7 @@
 import React from "react";
 import ReactApexChart from "react-apexcharts";
 import Select from "./Select";
+import { montserrat } from "@/utils/Fonts";
 
 const LineGraph = ({ data }) => {
   console.log("data", data);
@@ -17,6 +18,9 @@ const LineGraph = ({ data }) => {
     legend: {
       position: "top",
       horizontalAlign: "right",
+      fontSize: "14px",
+      fontWeight: "500",
+      fontFamily: `${montserrat.style.fontFamily}`,
     },
     xaxis: {
       categories: categories,

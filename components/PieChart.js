@@ -21,7 +21,6 @@ const PieChart = ({ pieData }) => {
     labels: labels,
     legend: {
       position: "right",
-
       formatter: function (seriesName, opts) {
         const percentage = percentages[opts.seriesIndex];
         return [
