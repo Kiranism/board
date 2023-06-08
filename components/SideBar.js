@@ -14,7 +14,7 @@ const SideBar = ({ setExpand }) => {
     setExpand(false);
   };
   return (
-    <aside className="fixed top-0 left-0 h-[calc(100vh-50px)] w-64 flex flex-col overflow-y-auto border-r bg-black px-5 py-8 text-white rounded-xl m-6">
+    <aside className="fixed z-40 top-0 left-0 h-[calc(100vh-50px)] w-64 flex flex-col overflow-y-auto border-r bg-black px-5 py-8 text-white rounded-xl m-6">
       <h2 className="mx-3 font-bold text-3xl">
         Board.{" "}
         <span
@@ -65,6 +65,14 @@ const SideBar = ({ setExpand }) => {
             </Link>
           </div>
         </nav>
+        <div className="flex mx-3 items-start gap-3 flex-col">
+          <Link href="#" className="text-white font-normal text-sm">
+            Help
+          </Link>
+          <Link href="#" className="font-normal text-sm text-white">
+            Contact Us
+          </Link>
+        </div>
       </div>
     </aside>
   );

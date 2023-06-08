@@ -15,17 +15,38 @@ import {
   UserIcons,
 } from "@/utils/Icons";
 import { Menu, Transition } from "@headlessui/react";
-import { Fragment, useState } from "react";
+import { Fragment, useState, useEffect } from "react";
 import SideBar from "@/components/SideBar";
+import axios from "axios";
 
 export default function Home() {
   const [expand, setExpand] = useState(false);
+  const [data, setData] = useState([]);
+  const [pieData, setPieData] = useState([]);
   const { data: session, status } = useSession({
     required: true,
     onUnauthenticated() {
       redirect("/signin");
     },
   });
+
+  useEffect(() => {
+    fetchData();
+    fetchPieData();
+  }, []);
+
+  const fetchData = () =>
+    axios
+      .get("https://mocki.io/v1/1018103d-d043-4c3a-bdc7-cc74aa2f8449")
+      .then((res) => setData(res.data))
+      .catch((err) => console.log(err));
+
+  const fetchPieData = () =>
+    axios
+      .get("https://mocki.io/v1/add951cd-3320-4d96-9ae1-e7da10361dac")
+      .then((res) => setPieData(res.data))
+      .catch((err) => console.log(err));
+
   if (status === "loading") {
     return "Loading...";
   }
@@ -34,20 +55,22 @@ export default function Home() {
     <>
       <main className="flex-1 sm:px-6">
         <header className="flex items-center justify-between w-full flex-wrap sm:flex-row flex-col">
-          <div className="flex items-center w-full sm:w-0 justify-between">
-            <button
-              className="lg:hidden navbar-burger flex items-center text-black p-3 order-1"
-              onClick={() => setExpand(!expand)}
-            >
-              <svg
-                className="block h-4 w-4 fill-current"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
+          <div className="flex items-center w-full sm:w-0 justify-between mb-4">
+            {!expand && (
+              <button
+                className="lg:hidden navbar-burger flex items-center text-black p-3 order-1"
+                onClick={() => setExpand(!expand)}
               >
-                <title>Mobile menu</title>
-                <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
-              </svg>
-            </button>
+                <svg
+                  className="block h-4 w-4 fill-current"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <title>Mobile menu</title>
+                  <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+                </svg>
+              </button>
+            )}
             <h2 className="text-black font-bold text-xl mx-auto sm:mx-0">
               Dashboard
             </h2>
@@ -141,10 +164,10 @@ export default function Home() {
           />
         </div>
         <div className="bg-white px-3 py-2 rounded-lg shadow-sm">
-          <LineGraph />
+          <LineGraph data={data} />
         </div>
         <div className="flex flex-col sm:flex-row gap-8 my-10">
-          <PieCard />
+          <PieCard pieData={pieData} />
           <ScheduleCard />
         </div>
       </main>

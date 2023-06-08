@@ -1,18 +1,13 @@
-"use client"
+"use client";
 import React from "react";
 import ReactApexChart from "react-apexcharts";
+import Select from "./Select";
 
-const LineGraph = () => {
-  const series = [
-    {
-      name: "Series 1",
-      data: [30, 40, 35, 50, 49, 60, 70, 91, 125],
-    },
-    {
-      name: "Series 2",
-      data: [20, 35, 45, 58, 64, 80, 92, 105, 110],
-    },
-  ];
+const LineGraph = ({ data }) => {
+  console.log("data", data);
+
+  const series = data?.series;
+  const categories = data?.categories;
 
   const options = {
     chart: {
@@ -24,27 +19,33 @@ const LineGraph = () => {
       horizontalAlign: "right",
     },
     xaxis: {
-      categories: [
-        "Jan",
-        "Feb",
-        "Mar",
-        "Apr",
-        "May",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep",
-      ],
+      categories: categories,
+    },
+    tooltip: {
+      enabled: true,
+      fillSeriesColor: true,
     },
   };
 
+  console.log("series", series, categories);
+
   return (
-    <ReactApexChart
-      options={options}
-      series={series}
-      type="line"
-      height={350}
-    />
+    data && (
+      <div>
+        <div className="flex flex-col items-start justify-between  px-5 py-2 text-black">
+          <h2 className="font-bold text-xl">Top Interactions</h2>
+          <p className="text-sm text-gray-700 z-40">
+            <Select />
+          </p>
+        </div>
+        <ReactApexChart
+          options={options}
+          series={series}
+          type="line"
+          height={350}
+        />
+      </div>
+    )
   );
 };
 

@@ -3,9 +3,14 @@ import { montserrat } from "@/utils/Fonts";
 import React from "react";
 import ReactApexChart from "react-apexcharts";
 
-const PieChart = () => {
-  const series = [55, 31, 14];
-
+const PieChart = ({ pieData }) => {
+  const series = pieData?.series;
+  const labels = pieData?.labels;
+  console.log(series, labels, "label ++");
+  const totalSum = series.reduce((sum, data) => sum + data, 0);
+  const percentages = series.map(
+    (data) => ((data / totalSum) * 100).toFixed(2) + "%"
+  );
   const options = {
     chart: {
       type: "pie",
@@ -13,16 +18,17 @@ const PieChart = () => {
         show: false,
       },
     },
-    labels: ["Basic Tees", "Custom Short Pants", "Super Hoodies"],
+    labels: labels,
     legend: {
       position: "right",
 
       formatter: function (seriesName, opts) {
+        const percentage = percentages[opts.seriesIndex];
         return [
           seriesName,
           "<br/>",
           "<span style='margin-left: 14px; display: inline-block; font-weight:400;'>",
-          opts.w.globals.series[opts.seriesIndex] + "%",
+          percentage,
           "</span>",
         ];
       },
