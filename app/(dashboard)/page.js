@@ -77,13 +77,13 @@ export default function Home() {
           </div>
 
           <div className="flex items-center gap-2 sm:gap-6">
-            <form className="flex text-black px-4 py-2 bg-white items-center h-10 w-[250px] rounded-2xl shadow-sm">
+            <form className="flex text-black px-4 py-2 bg-white items-center h-10 rounded-2xl shadow-sm">
               <input
-                className="flex-1 outline-none"
+                className="flex-1 outline-none w-[180px]"
                 type="text"
                 placeholder="Search..."
               />
-              <span className="m-3">
+              <span className="ml-2">
                 <SearchIcon />
               </span>
               <button hidden>Search</button>
