@@ -164,10 +164,10 @@ export default function Home() {
           />
         </div>
         <div className="bg-white px-3 py-2 rounded-lg shadow-sm">
-          <LineGraph data={data} />
+          {!!data.length && <LineGraph data={data} />}
         </div>
         <div className="flex flex-col sm:flex-row gap-8 my-8 flex-wrap">
-          <PieCard pieData={pieData} />
+              {!!pieData.length && <PieCard pieData={pieData} />}
           <ScheduleCard />
         </div>
       </main>
